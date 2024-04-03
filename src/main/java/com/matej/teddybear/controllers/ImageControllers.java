@@ -43,7 +43,7 @@ public class ImageControllers {
      * Create an Image in a Database
      * @param file MultipartFile The image file sent in CURL
      * @return String A Success or Error Message
-     * @throws IOException
+     * @throws IOException IO Exception when opening the file
      */
 
     @PostMapping("create")
@@ -53,9 +53,9 @@ public class ImageControllers {
 
     /**
      * Update an Existing image in a Database
-     * @param file
-     * @param image_id
-     * @return
+     * @param file The File that we want to replace it with
+     * @param image_id The image ID in the database
+     * @return String Success Message or Error Message
      */
     @PatchMapping("{image_id}")
     public String patchImage(@RequestParam("image") MultipartFile file, @PathVariable Long image_id) throws IOException {
@@ -63,9 +63,9 @@ public class ImageControllers {
     }
 
     /**
-     *
-     * @param image_id
-     * @return
+     * Delete an Image
+     * @param image_id The image ID in the database
+     * @return String Return a Success or Error Message
      */
     @DeleteMapping("{image_id}")
     public String deleteImage(@PathVariable Long image_id) {
