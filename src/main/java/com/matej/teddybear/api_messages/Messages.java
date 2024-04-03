@@ -2,6 +2,7 @@ package com.matej.teddybear.api_messages;
 
 public class Messages {
     public static final String SUCCESS_SAVING_TEDDY_BEAR = "Teddy Bear Saved Successfully!";
+
     public static final String SUCCESS_UPDATING_TEDDY_BEAR = "Teddy Bear Updated Successfully!";
 
     public static final String SUCCESS_DELETING_TEDDY_BEAR = "Successfully deleted Teddy Bear!";

@@ -7,6 +7,10 @@ import org.springframework.data.relational.core.mapping.Table;
 @Data
 @Table( name = "images" )
 public class Image {
+
+    /**
+     * ID in the Database object
+     */
     @Id
     Long id;
 

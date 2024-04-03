@@ -20,6 +20,11 @@ public class TeddyDataHandler {
         this.teddyRepository = teddyRepository;
     }
 
+    /**
+     * Create a New Teddy Bear Object in the Database
+     * @param teddy Teddy Bear Object containing the data
+     * @return String Either a Success Message, or Error Message
+     */
     public String NewTeddyBear(Teddy teddy) {
         try {
             teddyRepository.save(teddy);
@@ -30,9 +35,15 @@ public class TeddyDataHandler {
         }
     }
 
+    /**
+     * Update the Teddy Bear Object in the database
+     * @param original_teddy The Original Teddy Object in the database
+     * @param modified The modified data fetched from the Request
+     * @return String Return a Success or Error Message
+     */
     public String UpdateTeddyBear(Teddy original_teddy, Teddy modified) {
         // Update All fields to the original one
-       // try {
+       try {
             if(!Objects.equals(original_teddy.getTeddyBarcode(), modified.getTeddyBarcode())) {
                 teddyRepository.save(teddyUpdater(original_teddy, modified));
                 original_teddy.setTeddyBarcode(modified.getTeddyBarcode());
@@ -40,14 +51,18 @@ public class TeddyDataHandler {
             } else {
                 teddyRepository.save(teddyUpdater(original_teddy, modified));
             }
-
             return Messages.SUCCESS_UPDATING_TEDDY_BEAR;
-      /*  } catch (Exception error) {
+        } catch (Exception error) {
             System.out.println(error);
             return Messages.DB_ERROR;
-        }*/
+        }
     }
 
+    /**
+     * Delete the Teddy Bear from the Database
+     * @param teddy_id The Barcode for the Teddy Bear
+     * @return String Return a Success Message or Error Message
+     */
     public String deleteTeddy(Long teddy_id) {
         Teddy teddy = teddyRepository.findByTeddyBarcode(teddy_id);
         if (teddy != null){
