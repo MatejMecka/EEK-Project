@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="db.changelog-1.0.xml" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="matejmecka" id="init-schema">
+        <sql splitStatements="false">
+            CREATE TABLE teddies (
+                id SERIAL PRIMARY KEY NOT NULL UNIQUE,
+                teddy_Barcode SERIAL NOT NULL UNIQUE,
+                name VARCHAR(100),
+                date_received DATE,
+                received_from VARCHAR(255),
+                city VARCHAR(255),
+                latitude DECIMAL(8,6),
+                longitude Decimal(9,6),
+                description TEXT,
+                image_id SERIAL
+            );
+
+            CREATE TABLE images (
+                id SERIAL PRIMARY KEY NOT NULL UNIQUE,
+                file_name VARCHAR(255),
+                file_contents bytea
+            )
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>
