@@ -15,6 +15,8 @@ public class Messages {
 
     public static final String IMAGE_NOT_FOUND = "Image has not been found";
 
-    public static final String IMAGE_SAVED = "Image Saved Succesfully";
+    public static final String IMAGE_SAVED = "Image Saved Successfully";
+
+    public static final String IMAGE_UPDATED = "Image successfully Updated";
 
 }

@@ -41,4 +41,21 @@ public class ImageDataHandler {
             imageRepository.save(new_image);
             return Messages.IMAGE_SAVED;
     }
+
+    public String updateImage(MultipartFile file, Long id) throws IOException {
+        Optional<Image> image = imageRepository.findById(id);
+        if(image.isPresent()) {
+            image.get().setFileName(file.getOriginalFilename());
+            image.get().setFileContents(file.getBytes());
+            try {
+                imageRepository.save(image.get());
+                return Messages.IMAGE_UPDATED;
+            } catch (Error error){
+                System.out.println(error);
+                return Messages.DB_ERROR;
+            }
+        } else {
+            return Messages.IMAGE_NOT_FOUND;
+        }
+    }
 }
