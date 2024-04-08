@@ -15,11 +15,21 @@ public class ImageDataHandler {
 
     private final ImageRepository imageRepository;
 
+
+    /**
+     * Constructor to initialize imageRepogistory
+     * @param imageRepository the repository for images
+     */
     @Autowired
     public ImageDataHandler(ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
     }
 
+    /**
+     *
+     * @param imageId The ID in the database belonging to the image
+     * @return String Message indicating if successful or not
+     */
     public String deleteImage(Long imageId) {
         Optional<Image> image = imageRepository.findById(imageId);
         if (image.isPresent()){
@@ -34,6 +44,12 @@ public class ImageDataHandler {
         return null;
     }
 
+    /**
+     *
+     * @param file The raw bytes of the image
+     * @return String Success or Error Message
+     * @throws IOException If the image fails to be opened or written
+     */
     public String uploadImage(MultipartFile file) throws IOException {
             Image new_image = new Image();
             new_image.setFileName(file.getOriginalFilename());
@@ -42,6 +58,13 @@ public class ImageDataHandler {
             return Messages.IMAGE_SAVED;
     }
 
+    /**
+     *
+     * @param file the raw bytes of the image.
+     * @param id The Id in the Database
+     * @return String Success or Error Message
+     * @throws IOException When it fails to open or save the image in the database.
+     */
     public String updateImage(MultipartFile file, Long id) throws IOException {
         Optional<Image> image = imageRepository.findById(id);
         if(image.isPresent()) {

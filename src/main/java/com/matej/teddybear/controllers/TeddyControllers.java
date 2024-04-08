@@ -52,6 +52,15 @@ public class TeddyControllers {
 
     @PostMapping("create")
     public String createTeddy(@RequestBody Teddy teddy) {
+        Teddy ifExistingTeddy = teddyRepository.findByTeddyBarcode(teddy.getTeddyBarcode());
+        if(ifExistingTeddy != null) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, Messages.TEDDY_EXISTS);
+        }
+
+        if(teddy.getTeddyBarcode() == null) {
+            return Messages.MISSING_BARCODE;
+        }
+
         return teddyDataHandler.NewTeddyBear(teddy);
     }
     /**

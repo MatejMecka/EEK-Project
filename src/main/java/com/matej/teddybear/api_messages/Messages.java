@@ -19,4 +19,8 @@ public class Messages {
 
     public static final String IMAGE_UPDATED = "Image successfully Updated";
 
+    public static final String TEDDY_EXISTS = "Teddy Bear already exists!";
+
+    public static final String MISSING_BARCODE = "Teddy Bear is missing a barcode!";
+
 }
