@@ -63,7 +63,8 @@ public class TeddyControllers {
     @PatchMapping("{teddy_id}")
     public String patchTeddy(@RequestBody Teddy teddy, @PathVariable Long teddy_id) {
         Teddy teddy_original = teddyRepository.findByTeddyBarcode(teddy_id);
-        if (teddy != null){
+        System.out.println(teddy_original);
+        if (teddy_original != null){
             return teddyDataHandler.UpdateTeddyBear(teddy_original, teddy);
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, Messages.TEDDY_NOT_FOUND);
