@@ -37,23 +37,23 @@ public class TeddyDataHandler {
 
     /**
      * Update the Teddy Bear Object in the database
-     * @param original_teddy The Original Teddy Object in the database
+     * @param originalTeddy The Original Teddy Object in the database
      * @param modified The modified data fetched from the Request
      * @return String Return a Success or Error Message
      */
-    public String UpdateTeddyBear(Teddy original_teddy, Teddy modified) {
+    public String UpdateTeddyBear(Teddy originalTeddy, Teddy modified) {
         // Update All fields to the original one
-       try {
-           // Check if Unique broken
-           Teddy teddyUnique = teddyRepository.findByTeddyBarcode(modified.getTeddyBarcode());
-           if(teddyUnique != null) {
-               return Messages.TEDDY_BEAR_COLLISSION;
-           } else if(!Objects.equals(original_teddy.getTeddyBarcode(), modified.getTeddyBarcode())) {
-                teddyRepository.save(teddyUpdater(original_teddy, modified));
-                original_teddy.setTeddyBarcode(modified.getTeddyBarcode());
-                teddyRepository.save(teddyUpdater(original_teddy, modified));
+        try {
+            Teddy teddyUnique = teddyRepository.findByTeddyBarcode(modified.getTeddyBarcode());
+            Teddy teddyUniqueOriginal = teddyRepository.findByTeddyBarcode(originalTeddy.getTeddyBarcode());
+            if(teddyUnique != null && teddyUniqueOriginal != null && !Objects.equals(teddyUnique.getId(), teddyUniqueOriginal.getId())) {
+                return Messages.TEDDY_BEAR_COLLISSION;
+            } else if(!Objects.equals(originalTeddy.getTeddyBarcode(), modified.getTeddyBarcode())) {
+                teddyRepository.save(teddyUpdater(originalTeddy, modified));
+                originalTeddy.setTeddyBarcode(modified.getTeddyBarcode());
+                teddyRepository.save(teddyUpdater(originalTeddy, modified));
             } else {
-                teddyRepository.save(teddyUpdater(original_teddy, modified));
+                teddyRepository.save(teddyUpdater(originalTeddy, modified));
             }
             return Messages.SUCCESS_UPDATING_TEDDY_BEAR;
         } catch (Exception error) {
