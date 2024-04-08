@@ -55,7 +55,7 @@ public class ImageDataHandler {
             new_image.setFileName(file.getOriginalFilename());
             new_image.setFileContents(file.getBytes());
             imageRepository.save(new_image);
-            return Messages.IMAGE_SAVED;
+            return Messages.IMAGE_SAVED + " ID: " + new_image.getId();
     }
 
     /**

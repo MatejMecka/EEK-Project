@@ -9,18 +9,20 @@ public class Messages {
 
     public static final String TEDDY_NOT_FOUND = "Teddy Bear not found";
 
-    public static final String DB_ERROR = "There was something wrong when executing in the database";
+    public static final String DB_ERROR = "There was something wrong when executing in the database.";
 
     public static final String SUCCESS_DELETING_IMAGE = "Successfully deleted the image!";
 
-    public static final String IMAGE_NOT_FOUND = "Image has not been found";
+    public static final String IMAGE_NOT_FOUND = "Image has not been found.";
 
-    public static final String IMAGE_SAVED = "Image Saved Successfully";
+    public static final String IMAGE_SAVED = "Image Saved Successfully.";
 
-    public static final String IMAGE_UPDATED = "Image successfully Updated";
+    public static final String IMAGE_UPDATED = "Image successfully Updated.";
 
     public static final String TEDDY_EXISTS = "Teddy Bear already exists!";
 
     public static final String MISSING_BARCODE = "Teddy Bear is missing a barcode!";
+
+    public static final String TEDDY_BEAR_COLLISSION = "Teddy Bear Barcode exists on another Teddy Bear";
 
 }

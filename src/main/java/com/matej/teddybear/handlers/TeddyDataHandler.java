@@ -44,7 +44,11 @@ public class TeddyDataHandler {
     public String UpdateTeddyBear(Teddy original_teddy, Teddy modified) {
         // Update All fields to the original one
        try {
-            if(!Objects.equals(original_teddy.getTeddyBarcode(), modified.getTeddyBarcode())) {
+           // Check if Unique broken
+           Teddy teddyUnique = teddyRepository.findByTeddyBarcode(modified.getTeddyBarcode());
+           if(teddyUnique != null) {
+               return Messages.TEDDY_BEAR_COLLISSION;
+           } else if(!Objects.equals(original_teddy.getTeddyBarcode(), modified.getTeddyBarcode())) {
                 teddyRepository.save(teddyUpdater(original_teddy, modified));
                 original_teddy.setTeddyBarcode(modified.getTeddyBarcode());
                 teddyRepository.save(teddyUpdater(original_teddy, modified));
