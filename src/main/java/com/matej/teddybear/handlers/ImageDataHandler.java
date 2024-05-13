@@ -45,17 +45,16 @@ public class ImageDataHandler {
     }
 
     /**
-     *
      * @param file The raw bytes of the image
      * @return String Success or Error Message
      * @throws IOException If the image fails to be opened or written
      */
-    public String uploadImage(MultipartFile file) throws IOException {
+    public Long uploadImage(MultipartFile file) throws IOException {
             Image new_image = new Image();
             new_image.setFileName(file.getOriginalFilename());
             new_image.setFileContents(file.getBytes());
             imageRepository.save(new_image);
-            return Messages.IMAGE_SAVED + " ID: " + new_image.getId();
+            return new_image.getId();
     }
 
     /**

@@ -17,6 +17,7 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("/api/teddybear")
+@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.01:5173", "https://524f-77-29-29-178.ngrok-free.app"})
 public class TeddyControllers {
 
     /**

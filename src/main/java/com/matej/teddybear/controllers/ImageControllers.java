@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/images")
+@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.01:5173"})
 public class ImageControllers {
 
     private final ImageRepository imageRepository;
@@ -47,7 +48,7 @@ public class ImageControllers {
      */
 
     @PostMapping("create")
-    public String createImage(@RequestParam("image") MultipartFile file) throws IOException {
+    public Long createImage(@RequestParam("image") MultipartFile file) throws IOException {
         return imageDataHandler.uploadImage(file);
     }
 
